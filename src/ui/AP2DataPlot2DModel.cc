@@ -21,7 +21,8 @@ AP2DataPlot2DModel::AP2DataPlot2DModel(QSqlDatabase *db,QObject *parent) :
     while (query.next())
     {
         QString name = query.value("value").toString();
-        m_rowToTableMap.insert(query.value("idx").toInt(),name);
+        //m_rowToTableMap.insert(query.value("idx").toInt(),name);
+        m_rowToTableMap.insert(m_rowCount,name);
         m_rowCount++;
         QSqlQuery fmtquery(*m_sharedDb);
         if (!m_headerStringList.contains(name))
